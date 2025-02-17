@@ -26,6 +26,9 @@ public class KafkaProducerApp {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 //        properties.put(ProducerConfig.ACKS_CONFIG, "0");
+//        0  - не ждать подтверждения
+//        1  - ждать подтверждения записи только от лидирующей партиции
+//        -1 - ждать подтверждения записи от всех реплик партиции
 
         try(Producer<String, String> producer= new KafkaProducer<String, String>(properties)){
 

@@ -33,11 +33,11 @@ public class KafkaProducerTransactionApp {
 
             producer.initTransactions(); // Инициализация транзакции
 
-//            producer.send(new ProducerRecord<>("sandbox", "non Transaction Msg 0"));   // Этот код не сработает, т.к. в свойствах задана транзакционная отправка. Поэтому отправка сообщения без транзакции не выполнится
+//            producer.send(new ProducerRecord<>("sandbox", "non Transaction Msg 0"));   // Этот код не сработает, т.к. проинициализирована транзакционная отправка. Поэтому отправка сообщения без транзакции не выполнится
 
             producer.beginTransaction(); // Начало транзакции
-            producer.send(new ProducerRecord<>("sandbox", "Transaction 1, Msg 3"));
-            producer.send(new ProducerRecord<>("sandbox", "Transaction 1, Msg 4"));
+            producer.send(new ProducerRecord<>("sandbox", "Transaction 1, Msg 7"));
+            producer.send(new ProducerRecord<>("sandbox", "Transaction 1, Msg 8"));
             producer.commitTransaction(); // Коммит транзакции
 
 
