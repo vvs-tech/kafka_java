@@ -1,15 +1,11 @@
 package main.java.sbx;
 
-import org.apache.kafka.common.header.Header;
-import org.apache.kafka.common.header.internals.RecordHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class KafkaProducerTransactionApp {
