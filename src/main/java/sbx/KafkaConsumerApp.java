@@ -33,7 +33,7 @@ public class KafkaConsumerApp {
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092, localhost:39092, localhost:49092");
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // String must be one of: latest, earliest, none
+//        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"); // String must be one of: latest, earliest, none
 
 
         try(Consumer<String, String> consumer= new KafkaConsumer<String, String>(properties)){
