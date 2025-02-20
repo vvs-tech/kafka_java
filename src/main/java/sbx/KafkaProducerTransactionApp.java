@@ -36,6 +36,14 @@ public class KafkaProducerTransactionApp {
             producer.send(new ProducerRecord<>("sandbox", "Transaction 1, Msg 8"));
             producer.commitTransaction(); // Коммит транзакции
 
+            // Сообщения в рамках транзакции можно писать в разные партиции
+            // Несмотря на то,что для 2го и 3го сообщения указаны одинаковые ключи, сообщения будут записаны в разные партиции, т.к. партиции для этих сообщений указаны разные
+            producer.beginTransaction(); // Начало транзакции
+            producer.send(new ProducerRecord<>("sandbox",0, "transact-key-1", "Transaction 2, Msg 20"));
+            producer.send(new ProducerRecord<>("sandbox", 1,"transact-key-2","Transaction 2, Msg 21"));
+            producer.send(new ProducerRecord<>("sandbox", 2,"transact-key-2","Transaction 2, Msg 31"));
+            producer.commitTransaction(); // Коммит транзакции
+
 
         }
 

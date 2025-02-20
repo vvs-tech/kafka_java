@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -38,7 +37,7 @@ public class KafkaConsumerGroupApp {
             StreamSupport.stream(records.spliterator(), false)
                     .forEach(rec -> {
                                 LOGGER.info(" key - {}", rec);
-                                LOGGER.info(" Record: key {}, value {}", rec.key(), rec.value());
+                                LOGGER.info(" Record: key {}, partition {}, value {}", rec.key(), rec.partition(), rec.value());
                             }
                     );
 
@@ -49,15 +48,18 @@ public class KafkaConsumerGroupApp {
 }
 
 
+// Релизация интерфейса перебалансировщика
 class MyConsumerRebalanceListener implements ConsumerRebalanceListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerGroupApp.class);
 
+    // Метод onPartitionsRevoked - метод, когда у получателя требуется отозвать назначенные партиции, по завершению операции получения сообщений
     @Override
     public void onPartitionsRevoked(Collection<TopicPartition> partitions){
         LOGGER.info("Partitions revoked: {}", partitions);
     }
 
+    // Метод onPartitionsAssigned - метод, когда партиции назначаются получателю
     @Override
     public void onPartitionsAssigned(Collection<TopicPartition> partitions){
         LOGGER.info("Partitions assigned: {}", partitions);

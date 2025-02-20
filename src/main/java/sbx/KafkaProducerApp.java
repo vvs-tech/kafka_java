@@ -59,6 +59,16 @@ public class KafkaProducerApp {
             LOGGER.info("Metadata {}", metadataKey);
             LOGGER.info("================== Получить метаданные сообщения с указанным ключом  ========================");
 
+            RecordMetadata metadataKeyPartition0 =  producer.send(new ProducerRecord<>("sandbox", 0, "key-1","Metadata Partition 0, key-1 Msg: 2")).get();
+            LOGGER.info("================== Получить метаданные сообщения с указанным ключом и партицией========================");
+            LOGGER.info("Metadata {}", metadataKeyPartition0);
+            LOGGER.info("================== Получить метаданные сообщения с указанным ключом и партицией========================");
+
+            RecordMetadata metadataKeyPartition1 =  producer.send(new ProducerRecord<>("sandbox", 1, "key-1","Metadata Partition 1, key-1 Msg: 2")).get();
+            LOGGER.info("================== Получить метаданные сообщения с указанным ключом и партицией========================");
+            LOGGER.info("Metadata {}", metadataKeyPartition1);
+            LOGGER.info("================== Получить метаданные сообщения с указанным ключом и партицией========================");
+
 
             RecordMetadata metadataKeyPartition =  producer.send(new ProducerRecord<>("sandbox", 2, "key-1","Metadata Partition 2, key-1 Msg: 3")).get();
             LOGGER.info("================== Получить метаданные сообщения с указанным ключом и партицией========================");
