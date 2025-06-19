@@ -38,12 +38,13 @@ public class KafkaConsumerSeekApp {
             consumer.assign(
                     Arrays.asList(
                             new TopicPartition("sandbox", 0),
-                            new TopicPartition("sandbox", 1))
+                            new TopicPartition("sandbox", 1),
+                            new TopicPartition("sandbox", 2))
             );
 
 
             // 1. Получить сообщения из конкретной партиции с указанного смещения
-//            consumer.seek(new TopicPartition("sandbox", 1), 4);
+            consumer.seek(new TopicPartition("sandbox", 2), 0);
 
             // 2. Получить сообщения из конкретной партиции с начального смещения
 //            consumer.seekToBeginning(Arrays.asList(new TopicPartition("sandbox", 1)));
@@ -54,8 +55,8 @@ public class KafkaConsumerSeekApp {
 
 
             // 4. Поиск смещения по метке времени
-            Map<TopicPartition, OffsetAndTimestamp> offsets = consumer.offsetsForTimes(Collections.singletonMap(new TopicPartition("sandbox", 1), 1740066484902L));  // Значение Long заменить на значение метки времени конкретного сообщения партиции
-            consumer.seek(new TopicPartition("sandbox", 1), offsets.get(new TopicPartition("sandbox", 1)).offset());
+//            Map<TopicPartition, OffsetAndTimestamp> offsets = consumer.offsetsForTimes(Collections.singletonMap(new TopicPartition("sandbox", 1), 1740066484902L));  // Значение Long заменить на значение метки времени конкретного сообщения партиции
+//            consumer.seek(new TopicPartition("sandbox", 1), offsets.get(new TopicPartition("sandbox", 1)).offset());
 
 
 

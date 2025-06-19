@@ -36,9 +36,10 @@ public class KafkaProducerApp {
             producer.send(new ProducerRecord<>("sandbox", "Hello java 7"));
             producer.send(new ProducerRecord<>("sandbox", "Hello java 8"));
             producer.send(new ProducerRecord<>("sandbox", "Hello java 9"));
-            producer.send(new ProducerRecord<>("sandbox", 1,"key-1", "Hello java 9"));
+            producer.send(new ProducerRecord<>("sandbox", 1,"key-1", "Hello java 10 Part 1"));
+            producer.send(new ProducerRecord<>("sandbox", 2,"key-1", "Hello java 20 Part 2"));
 
-
+/*
             // Отправить сообщение в топик sandbox и получить метаданные сообщения
             RecordMetadata metadata =  producer.send(new ProducerRecord<>("sandbox", "Metadata 1")).get();
             LOGGER.info("=============== Получить метаданные сообщения ===========================");
@@ -103,7 +104,7 @@ public class KafkaProducerApp {
             LOGGER.info("================== Получить метаданные сообщения с указанным ключом, партицией, TimeStamp и заголовком ========================");
             LOGGER.info("Metadata {}", metadataTimeStampKeyPartitionHeader);
             LOGGER.info("================== Получить метаданные сообщения с указанным ключом, партицией, TimeStamp и заголовком ========================");
-
+*/
 
 
         }
