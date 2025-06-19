@@ -49,7 +49,7 @@ public class KafkaConsumerApp {
             StreamSupport.stream(records.spliterator(), false)
                     .forEach(rec -> {
                                 LOGGER.info(" key - {}", rec);
-                                LOGGER.info(" Record: key {}, value {}", rec.key(), rec.value());
+                                LOGGER.info(" Record: partition {}, key {}, value {}", rec.partition(), rec.key(), rec.value());
                     }
                     );
 

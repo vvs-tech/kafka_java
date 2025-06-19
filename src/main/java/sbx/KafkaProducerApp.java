@@ -34,6 +34,9 @@ public class KafkaProducerApp {
 
             // Отправить сообщение в топик sandbox
             producer.send(new ProducerRecord<>("sandbox", "Hello java 7"));
+            producer.send(new ProducerRecord<>("sandbox", "Hello java 8"));
+            producer.send(new ProducerRecord<>("sandbox", "Hello java 9"));
+            producer.send(new ProducerRecord<>("sandbox", 1,"key-1", "Hello java 9"));
 
 
             // Отправить сообщение в топик sandbox и получить метаданные сообщения
