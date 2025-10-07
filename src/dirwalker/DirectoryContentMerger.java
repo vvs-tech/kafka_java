@@ -1,7 +1,6 @@
 package dirwalker;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,8 +14,16 @@ public class DirectoryContentMerger {
 //        String inputDirectory = args[0];
 //        String outputFile = args[1];
 
-        String inputDirectory = "C:\\git_m\\kafka-consumer-service\\src";
-        String outputFile = "C:\\git_m\\content_merger\\f1.txt";
+
+//        String inputDirectory = "C:\\git_m\\kafka-consumer-service\\src";
+//        String outputFile = "C:\\git_m\\content_merger\\f15.txt";
+
+
+        String inputDirectory = "C:\\git_m\\kafka-producer-service\\src";
+        String outputFile = "C:\\git_m\\content_merger\\p5.txt";
+
+//        String inputDirectory = "C:\\git_m\\kafka_server\\frontend";
+//        String outputFile = "C:\\git_m\\content_merger\\front5.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             processDirectory(Paths.get(inputDirectory), writer);
@@ -56,7 +63,7 @@ public class DirectoryContentMerger {
             }
         }
 
-        writer.write("========================================================================================\n"); // Добавляем пустую строку между файлами
+        writer.write("========================================================================================\n");
     }
 }
 
