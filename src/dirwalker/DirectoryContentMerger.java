@@ -19,11 +19,14 @@ public class DirectoryContentMerger {
 //        String outputFile = "C:\\git_m\\content_merger\\f15.txt";
 
 
-        String inputDirectory = "C:\\git_m\\kafka-producer-service\\src";
-        String outputFile = "C:\\git_m\\content_merger\\p5.txt";
+//        String inputDirectory = "C:\\git_m\\kafka-producer-service\\src";
+//        String outputFile = "C:\\git_m\\content_merger\\p5.txt";
 
 //        String inputDirectory = "C:\\git_m\\kafka_server\\frontend";
 //        String outputFile = "C:\\git_m\\content_merger\\front5.txt";
+
+        String inputDirectory = "C:\\git_m\\kafka-bridge-service";
+        String outputFile = "C:\\git_m\\content_merger\\kb3.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             processDirectory(Paths.get(inputDirectory), writer);
@@ -41,13 +44,17 @@ public class DirectoryContentMerger {
         }
 
         for (File file : files) {
-            if (file.isDirectory()) {
-                processDirectory(file.toPath(), writer);
-            } else {
-                if (file.isFile() && file.canRead()) {
-                    writeFileContent(file, writer);
+            if(!file.getName().equals("target") && !file.getName().equals(".git")
+                    && !file.getName().equals(".idea") && !file.getName().equals("env.example")){
+                if (file.isDirectory()) {
+                    processDirectory(file.toPath(), writer);
+                } else {
+                    if (file.isFile() && file.canRead()) {
+                        writeFileContent(file, writer);
+                    }
                 }
             }
+
         }
     }
 
